@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: SimpleWeb
+  profiles:
+    active: dev
+
+--- ## dev
+server:
+  port: 8001
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+--- ## test
+server:
+  port: 8001
+spring:
+  config:
+    activate:
+      on-profile: test
+
+--- ## prod
+server:
+  port: 8001
+spring:
+  config:
+    activate:
+      on-profile: prod
