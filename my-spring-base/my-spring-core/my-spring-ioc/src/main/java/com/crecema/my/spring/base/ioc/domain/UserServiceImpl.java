@@ -1,11 +1,15 @@
 package com.crecema.my.spring.base.ioc.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserServiceImpl implements UserService, InitializingBean, DisposableBean {
 
     @Setter

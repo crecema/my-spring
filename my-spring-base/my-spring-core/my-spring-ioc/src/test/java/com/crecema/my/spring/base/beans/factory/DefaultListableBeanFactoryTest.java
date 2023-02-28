@@ -3,7 +3,11 @@ package com.crecema.my.spring.base.beans.factory;
 import com.crecema.my.spring.base.ioc.config.PrintBeanPostProcessor;
 import com.crecema.my.spring.base.ioc.config.TraceBeanPostProcessor;
 import com.crecema.my.spring.base.ioc.domain.*;
+import com.crecema.my.spring.base.ioc.domain.loop.A;
+import com.crecema.my.spring.base.ioc.domain.loop.B;
+import com.crecema.my.spring.base.ioc.domain.loop.C;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanExpressionResolver;
 import org.springframework.beans.factory.config.SingletonBeanRegistry;
@@ -14,21 +18,7 @@ import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.core.AliasRegistry;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-/**
- * DefaultListableBeanFactory
- * 字段：
- * beanDefinitionNames 存储bean定义
- *
- * 方法：
- * getBean() x5
- * getBeanProvider()
- * getType()
- *
- * getBeanDefinitionNames
- * containsBeanDefinition
- *
- */
+import static org.springframework.beans.factory.support.AbstractBeanDefinition.AUTOWIRE_BY_NAME;
 
 public class DefaultListableBeanFactoryTest {
 
@@ -156,6 +146,29 @@ public class DefaultListableBeanFactoryTest {
         assertEquals(2, configurableBeanFactory.getBeanPostProcessorCount());
     }
 
+    @Test // 循环依赖
+    public void testSimpleSingleton() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        GenericBeanDefinition aDefinition = new GenericBeanDefinition();
+        GenericBeanDefinition bDefinition = new GenericBeanDefinition();
+        GenericBeanDefinition cDefinition = new GenericBeanDefinition();
+        aDefinition.setBeanClass(A.class);
+        bDefinition.setBeanClass(B.class);
+        cDefinition.setBeanClass(C.class);
+        aDefinition.setAutowireMode(AUTOWIRE_BY_NAME);
+        bDefinition.setAutowireMode(AUTOWIRE_BY_NAME);
+        cDefinition.setAutowireMode(AUTOWIRE_BY_NAME);
+        beanFactory.registerBeanDefinition("a", aDefinition);
+        beanFactory.registerBeanDefinition("b", bDefinition);
+        beanFactory.registerBeanDefinition("c", cDefinition);
+
+        Object a = beanFactory.getBean("a");
+        Object b = beanFactory.getBean("b");
+        Object c = beanFactory.getBean("c");
+
+        System.out.println("success");
+    }
 
     private BeanDefinition newBeanDefinition(Class<?> beanClass) {
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
