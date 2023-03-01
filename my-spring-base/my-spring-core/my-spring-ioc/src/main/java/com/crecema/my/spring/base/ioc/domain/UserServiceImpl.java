@@ -1,6 +1,7 @@
 package com.crecema.my.spring.base.ioc.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.DisposableBean;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService, InitializingBean, DisposableBean {
 
     @Setter
+    @Getter
     private UserRepository userRepository;
 
     @Override

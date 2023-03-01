@@ -7,7 +7,7 @@ import com.crecema.my.spring.base.ioc.domain.loop.A;
 import com.crecema.my.spring.base.ioc.domain.loop.B;
 import com.crecema.my.spring.base.ioc.domain.loop.C;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.PropertyValue;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanExpressionResolver;
 import org.springframework.beans.factory.config.SingletonBeanRegistry;
@@ -91,6 +91,7 @@ public class DefaultListableBeanFactoryTest {
         UserService userService;
         userService = beanFactory.getBean(UserService.class);
         assertNotNull(userService);
+        assertNull(((UserServiceImpl) userService).getUserRepository()); // 没有自动注入
 
         UserController userController;
         userController = beanFactory.getBean(UserController.class, userService);
@@ -146,8 +147,45 @@ public class DefaultListableBeanFactoryTest {
         assertEquals(2, configurableBeanFactory.getBeanPostProcessorCount());
     }
 
+    @Test // BeanFactory扩展，提供自动注入能力
+    public void testAsAutowireCapableBeanFactory() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        GenericBeanDefinition userRepositoryDefinition = new GenericBeanDefinition();
+        userRepositoryDefinition.setBeanClass(UserRepository.class);
+        userRepositoryDefinition.setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_BY_NAME);
+        beanFactory.registerBeanDefinition("userRepository", userRepositoryDefinition);
+
+        GenericBeanDefinition userServiceDefinition = new GenericBeanDefinition();
+        userServiceDefinition.setBeanClass(UserServiceImpl.class);
+        userServiceDefinition.setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_BY_NAME);
+        beanFactory.registerBeanDefinition("userService", userServiceDefinition);
+
+        GenericBeanDefinition userControllerDefinition = new GenericBeanDefinition();
+        userControllerDefinition.setBeanClass(UserController.class);
+        userControllerDefinition.setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_CONSTRUCTOR);
+        beanFactory.registerBeanDefinition("userController", userControllerDefinition);
+
+        UserController userController = beanFactory.getBean("userController", UserController.class);
+        assertNotNull(userController.user(1001));
+
+        UserServiceImpl userService = (UserServiceImpl) beanFactory.getBean("userService");
+        assertNotNull(userService.getUserRepository());
+    }
+
+    @Test // BeanFactory扩展，提供了分析和修改 Bean 定义以及预实例化单例的能力
+    public void testAsConfigurableListableBeanFactory() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        beanFactory.registerBeanDefinition("userRepository", newBeanDefinition(UserRepository.class));
+        beanFactory.registerBeanDefinition("userService", newBeanDefinition(UserServiceImpl.class));
+
+        // 预实例化单例bean
+        beanFactory.preInstantiateSingletons();
+    }
+
     @Test // 循环依赖
-    public void testSimpleSingleton() {
+    public void testLoopDepend() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
         GenericBeanDefinition aDefinition = new GenericBeanDefinition();
