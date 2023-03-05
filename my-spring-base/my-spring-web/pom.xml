@@ -10,11 +10,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>my-spring-data</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>my-spring-web</artifactId>
 
-    <modules>
-        <module>my-spring-jdbc</module>
-    </modules>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
