@@ -10,17 +10,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>my-spring-core</artifactId>
+    <artifactId>my-spring-common</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.crecema</groupId>
-            <artifactId>my-spring-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
 
