@@ -39,6 +39,9 @@
 
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <Loggers>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
         <Root level="all">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="InfoLog"/>
