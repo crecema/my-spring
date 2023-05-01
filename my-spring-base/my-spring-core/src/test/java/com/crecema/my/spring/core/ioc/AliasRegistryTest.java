@@ -1,4 +1,4 @@
-package com.crecema.my.spring.base.core.ioc;
+package com.crecema.my.spring.core.ioc;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

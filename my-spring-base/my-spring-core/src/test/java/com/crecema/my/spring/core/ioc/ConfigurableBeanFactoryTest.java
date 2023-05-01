@@ -1,4 +1,4 @@
-package com.crecema.my.spring.base.core.ioc;
+package com.crecema.my.spring.core.ioc;
 
 import com.crecema.my.spring.common.client.ApiSpaceClient;
 import com.crecema.my.spring.common.service.JokesService;
