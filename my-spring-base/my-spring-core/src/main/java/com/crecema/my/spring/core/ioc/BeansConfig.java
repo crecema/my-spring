@@ -7,9 +7,11 @@ import com.crecema.my.spring.common.service.JokesServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan("com.crecema.my.spring.core.ioc")
+@ComponentScan("com.crecema.my.spring.core")
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 public class BeansConfig {
 
     @Bean

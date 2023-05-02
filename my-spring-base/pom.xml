@@ -21,13 +21,14 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>6.0.4</spring.version>
+        <spring.version>6.0.7</spring.version>
         <mysql.version>8.0.26</mysql.version>
         <lombok.version>1.18.20</lombok.version>
         <junit.version>5.8.0</junit.version>
         <testable.version>0.7.9</testable.version>
         <jsckson.version>2.14.2</jsckson.version>
         <log4j.version>2.20.0</log4j.version>
+        <aspectj.version>1.9.7</aspectj.version>
     </properties>
 
     <dependencyManagement>
@@ -71,6 +72,11 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

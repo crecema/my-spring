@@ -17,10 +17,11 @@ import java.util.Optional;
 @Slf4j
 public class ApiSpaceClient {
 
-    public static final String API_URL = "https://eolink.o.apispace.com/xhdq/common/joke/getJokesByRandom";
+    private static final String API_URL = "https://eolink.o.apispace.com/xhdq/common/joke/getJokesByRandom";
+
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
     public JokesResponse getJokesByRandom(JokesRequest request) {
-        HttpClient httpClient = HttpClient.newHttpClient();
         String body = buildQuery(JsonUtils.toMap(request, String.class, String.class));
         HttpRequest httpRequest = HttpRequest.newBuilder(URI.create(API_URL))
                 .POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8))
@@ -30,7 +31,7 @@ public class ApiSpaceClient {
                 .build();
         HttpResponse<String> httpResponse = null;
         try {
-            httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            httpResponse = HTTP_CLIENT.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             return Optional.ofNullable(httpResponse)
                     .filter(response -> Objects.equals(response.statusCode(), 200))
                     .map(HttpResponse::body)
