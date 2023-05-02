@@ -25,7 +25,7 @@ public class TraceAspect {
         log.info("getJokesByRandom, request: {}", JsonUtils.toJson(request));
     }
 
-    @AfterReturning(value = "getJokesByRandom()", returning = "response")
+    @AfterReturning(value = "getJokesByRandom()", argNames = "response", returning = "response")
     public void afterGetJokesByRandom(JokesResponse response) {
         log.info("getJokesByRandom response: {}", JsonUtils.toJson(response));
     }
