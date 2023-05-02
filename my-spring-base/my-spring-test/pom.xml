@@ -12,5 +12,20 @@
 
     <artifactId>my-spring-test</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.crecema</groupId>
+            <artifactId>my-spring-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
