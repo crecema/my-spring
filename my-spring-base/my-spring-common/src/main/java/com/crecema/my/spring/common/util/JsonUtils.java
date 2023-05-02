@@ -6,13 +6,14 @@ import com.fasterxml.jackson.databind.type.ArrayType;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.MapType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-public class JsonUtils {
+public abstract class JsonUtils {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
-    private JsonUtils() {}
 
     public static String toJson(Object object) {
         try {
