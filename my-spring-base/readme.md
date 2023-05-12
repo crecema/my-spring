@@ -48,3 +48,5 @@ Bean的生命周期
 6. BeanPostProcessor后置处理：如果Bean实现了BeanPostProcessor接口，将会调用postProcessAfterInitialization方法，BeanPostProcessor后置处理可以通过实现BeanPostProcessor接口来自定义处理逻辑
 7. 使用Bean：Bean可以正常使用了
 8. 销毁Bean：如果Bean实现了DisposableBean接口，将会调用destroy方法，销毁Bean可以通过实现DestructionAwareBeanPostProcessor接口来自定义销毁逻辑
+
+![DisposableBean](./picture/DispatcherServlet.png)
