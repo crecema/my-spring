@@ -1,4 +1,4 @@
-package com.crecema.simpleweb;
+package com.crecema.my.spring.boot.simpleweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

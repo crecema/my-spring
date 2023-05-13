@@ -1,4 +1,4 @@
-package com.crecema.simpleweb;
+package com.crecema.my.spring.boot.simpleweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

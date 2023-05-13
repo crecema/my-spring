@@ -1,0 +1,9 @@
+# actuator http://localhost:8080/actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: on
+  endpoints:
+    web:
+      exposure:
+        include: health,info,beans,shutdown

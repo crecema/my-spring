@@ -12,4 +12,11 @@
     <artifactId>simple-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.crecema</groupId>
+            <artifactId>my-spring-common</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
