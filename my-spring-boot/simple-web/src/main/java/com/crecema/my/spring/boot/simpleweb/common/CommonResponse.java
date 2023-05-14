@@ -15,6 +15,10 @@ public class CommonResponse<T> {
         this.data = data;
     }
 
+    public static <T> CommonResponse<T> success() {
+        return new CommonResponse<>(ErrorCode.SUCCESS, null);
+    }
+
     public static <T> CommonResponse<T> success(T data) {
         return new CommonResponse<>(ErrorCode.SUCCESS, data);
     }

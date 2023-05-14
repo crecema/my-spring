@@ -1,3 +1,10 @@
+spring:
+  application:
+    name: simple-web
+  profiles:
+    active: dev
+server:
+  port: 8000
 # actuator http://localhost:8080/actuator
 management:
   endpoint:
@@ -6,4 +13,19 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,beans,shutdown
+        include: health,info,beans,env,shutdown
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+---
+spring:
+  config:
+    activate:
+      on-profile: prod

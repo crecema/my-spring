@@ -15,34 +15,33 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>simple-web</module>
+    </modules>
+
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 非Spring依赖版本 -->
+        <my-spring-common.version>1.0-SNAPSHOT</my-spring-common.version>
+        <testable.version>0.7.9</testable.version>
+        <!-- 替换Spring某些依赖的默认版本-->
+        <snakeyaml.version>2.0</snakeyaml.version>
     </properties>
 
-    <!-- 非Spring依赖管理-->
+    <!-- 非Spring依赖管理 -->
     <dependencyManagement>
         <dependencies>
             <!--二方库-->
             <dependency>
                 <groupId>com.crecema</groupId>
                 <artifactId>my-spring-common</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${my-spring-common.version}</version>
             </dependency>
             <!--三方库-->
             <dependency>
                 <groupId>com.alibaba.testable</groupId>
                 <artifactId>testable-all</artifactId>
-                <version>0.7.9</version>
+                <version>${testable.version}</version>
                 <scope>test</scope>
-            </dependency>
-            <!-- 替换Spring依赖库版本-->
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>2.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
