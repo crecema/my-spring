@@ -1,10 +1,35 @@
-spring:
-  application:
-    name: simple-web
-  profiles:
-    active: dev
 server:
   port: 8000
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/my-database?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+  # redisson
+  redis:
+    redisson:
+      file: classpath:redisson.yaml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
 # actuator http://localhost:8080/actuator
 management:
   endpoint:
@@ -14,11 +39,6 @@ management:
     web:
       exposure:
         include: health,info,beans,env,shutdown
----
-spring:
-  config:
-    activate:
-      on-profile: dev
 ---
 spring:
   config:

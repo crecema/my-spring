@@ -17,12 +17,16 @@
 
     <modules>
         <module>simple-web</module>
+        <module>my-spring-boot-common</module>
+        <module>my-spring-boot-data</module>
     </modules>
 
     <properties>
         <!-- 非Spring依赖版本 -->
-        <my-spring-common.version>1.0-SNAPSHOT</my-spring-common.version>
+        <mysql.version>8.0.33</mysql.version>
         <testable.version>0.7.9</testable.version>
+        <redisson.version>3.21.2</redisson.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <!-- 替换Spring某些依赖的默认版本-->
         <snakeyaml.version>2.0</snakeyaml.version>
     </properties>
@@ -31,17 +35,27 @@
     <dependencyManagement>
         <dependencies>
             <!--二方库-->
-            <dependency>
-                <groupId>com.crecema</groupId>
-                <artifactId>my-spring-common</artifactId>
-                <version>${my-spring-common.version}</version>
-            </dependency>
             <!--三方库-->
             <dependency>
                 <groupId>com.alibaba.testable</groupId>
                 <artifactId>testable-all</artifactId>
                 <version>${testable.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

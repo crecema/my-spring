@@ -1,6 +1,6 @@
 package com.crecema.my.spring.boot.simpleweb.controller;
 
-import com.crecema.my.spring.boot.simpleweb.common.CommonResponse;
+import com.crecema.my.spring.boot.common.CommonResponse;
 import com.crecema.my.spring.boot.simpleweb.service.JokeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

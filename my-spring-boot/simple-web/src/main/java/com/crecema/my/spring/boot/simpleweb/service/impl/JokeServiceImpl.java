@@ -1,10 +1,10 @@
 package com.crecema.my.spring.boot.simpleweb.service.impl;
 
-import com.crecema.my.spring.boot.simpleweb.client.ApiSpaceClient;
-import com.crecema.my.spring.boot.simpleweb.client.domain.JokesRequest;
-import com.crecema.my.spring.boot.simpleweb.client.domain.JokesResponse;
-import com.crecema.my.spring.boot.simpleweb.common.CommonException;
-import com.crecema.my.spring.boot.simpleweb.common.ErrorCode;
+import com.crecema.my.spring.boot.common.CommonException;
+import com.crecema.my.spring.boot.common.ErrorCode;
+import com.crecema.my.spring.boot.common.client.ApiSpaceClient;
+import com.crecema.my.spring.boot.common.client.domain.JokesRequest;
+import com.crecema.my.spring.boot.common.client.domain.JokesResponse;
 import com.crecema.my.spring.boot.simpleweb.service.JokeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
