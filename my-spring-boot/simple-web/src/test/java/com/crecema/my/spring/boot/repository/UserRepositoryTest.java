@@ -16,7 +16,8 @@ public class UserRepositoryTest {
 
     @Test
     void testGetOneByEmail() {
-        User user = userRepository.getOneByEmail("5874495@gmail.com");
+        User user = userRepository.getOneByEmail("crece.ma@gmail.com");
+        System.out.println(user);
         Assertions.assertNotNull(user);
     }
 

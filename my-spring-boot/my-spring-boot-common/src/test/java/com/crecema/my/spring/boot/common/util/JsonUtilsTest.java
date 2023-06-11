@@ -1,4 +1,4 @@
-package com.crecema.my.spring.boot.common.utils;
+package com.crecema.my.spring.boot.common.util;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

@@ -28,7 +28,7 @@ public class User {
 
     private String phone;
 
-    private String idNumber;
+    private String idNo;
 
     private Integer status;
 

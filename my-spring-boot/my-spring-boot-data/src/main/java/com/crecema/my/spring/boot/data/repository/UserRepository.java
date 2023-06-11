@@ -45,7 +45,7 @@ public class UserRepository {
                 .eq(condition.getName() != null, User::getName, condition.getName())
                 .eq(condition.getEmail() != null, User::getEmail, condition.getEmail())
                 .eq(condition.getPhone() != null, User::getPhone, condition.getPhone())
-                .eq(condition.getIdNumber() != null, User::getIdNumber, condition.getIdNumber())
+                .eq(condition.getIdNo() != null, User::getIdNo, condition.getIdNo())
                 .eq(condition.getStatus() != null, User::getStatus, condition.getStatus());
     }
 

@@ -22,7 +22,7 @@ public class CommonException extends RuntimeException {
         this.errorCode = ErrorCode.UNKNOWN_ERROR;
     }
 
-    private static String buildMessage(int code, String desc, String message) {
+    private static String buildMessage(String code, String desc, String message) {
         return code + " | " + desc + " | " + message;
     }
 

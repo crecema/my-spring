@@ -13,4 +13,8 @@
     <groupId>org.crecema</groupId>
     <artifactId>my-spring-boot-common</artifactId>
 
+    <dependencies>
+
+    </dependencies>
+
 </project>

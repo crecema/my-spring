@@ -1,6 +1,6 @@
 package com.crecema.my.spring.boot.common;
 
-import com.crecema.my.spring.boot.common.utils.JsonUtils;
+import com.crecema.my.spring.boot.common.util.JsonUtils;
 import org.junit.jupiter.api.Test;
 
 public class CommonExceptionTest {

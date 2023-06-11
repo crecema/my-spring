@@ -2,7 +2,7 @@ package com.crecema.my.spring.boot.common.client;
 
 import com.crecema.my.spring.boot.common.client.domain.JokesRequest;
 import com.crecema.my.spring.boot.common.client.domain.JokesResponse;
-import com.crecema.my.spring.boot.common.utils.JsonUtils;
+import com.crecema.my.spring.boot.common.util.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

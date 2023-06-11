@@ -7,13 +7,23 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCode {
 
-    SUCCESS(0, "success"),
-    FAILURE(1, "failure"),
-    UNKNOWN_ERROR(-1, "unknown error"),
-    INVALID_PARAMETER(1001, "invalid parameter"),
-    ;
+    SUCCESS("00000", "success"),
 
-    private final int code;
+    CLIENT_ERROR("A0000", "client error"),
+    INVALID_PARAMETER("A0001", "invalid parameter"),
+
+    SERVER_ERROR("B0000", "server error"),
+    SERVER_UNKNOWN_ERROR("B0001", "unknown error"),
+
+    THIRD_PARTY_ERROR("C0000", "third party error"),
+    THIRD_SERVICE_ERROR("C1000", "third service error"),
+    DATABASE_ERROR("C2000", "database error"),
+    CACHE_ERROR("C3000", "cache error"),
+    MESSAGE_QUEUE_ERROR("C4000", "message queue error"),
+
+    UNKNOWN_ERROR("11111", "unknown error");
+
+    private final String code;
     private final String desc;
 
 }

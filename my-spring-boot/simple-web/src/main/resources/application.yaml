@@ -6,7 +6,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/my-database?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/my-database?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -30,7 +30,7 @@ spring:
     activate:
       on-profile: dev
 
-# actuator http://localhost:8080/actuator
+# actuator http://localhost:8000/actuator
 management:
   endpoint:
     shutdown:

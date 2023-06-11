@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CommonResponse<T> {
 
-    private final int code;
+    private final String code;
     private final String desc;
     private final T data;
 
