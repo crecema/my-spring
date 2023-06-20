@@ -23,4 +23,9 @@ public class RedisTest {
         System.out.println(list);
     }
 
+    @Test
+    void testLock() {
+
+    }
+
 }
