@@ -1,8 +1,6 @@
 package com.crecema.my.spring.joke.launcher;
 
-import com.crecema.my.spring.joke.common.client.JokeApiClient;
 import com.crecema.my.spring.joke.service.JokeService;
-import com.crecema.my.spring.joke.service.impl.JokeServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -13,7 +11,7 @@ public class JokeLauncher {
 
     private final JokeService jokeService;
 
-    private void run() {
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
@@ -33,10 +31,6 @@ public class JokeLauncher {
             }
             jokeList.forEach(System.out::println);
         }
-    }
-
-    public static void launch() {
-        new JokeLauncher(new JokeServiceImpl(new JokeApiClient())).run();
     }
 
 }
