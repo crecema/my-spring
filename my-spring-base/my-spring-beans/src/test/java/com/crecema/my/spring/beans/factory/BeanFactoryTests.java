@@ -56,12 +56,37 @@ public class BeanFactoryTests {
     void test_FactoryBean() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         beanFactory.registerBeanDefinition("myJokeService", BeanDefinitionBuilder
-                .genericBeanDefinition(MyJokeServiceFactory.class)
+                .genericBeanDefinition(MyJokeServiceFactoryBean.class)
                 .getBeanDefinition());
         JokeService jokeService = (JokeService) beanFactory.getBean("myJokeService");
         Assertions.assertNotNull(jokeService);
-        MyJokeServiceFactory jokeServiceFactory = (MyJokeServiceFactory) beanFactory.getBean("&myJokeService");
+        MyJokeServiceFactoryBean jokeServiceFactory = (MyJokeServiceFactoryBean) beanFactory.getBean("&myJokeService");
         Assertions.assertNotNull(jokeServiceFactory);
+    }
+
+    @Test
+    void test_BeanFactoryMethod() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        beanFactory.registerBeanDefinition("myJokeServiceFactory", BeanDefinitionBuilder
+                .genericBeanDefinition(MyJokeServiceFactory.class)
+                .getBeanDefinition());
+        beanFactory.registerBeanDefinition("myJokeService", BeanDefinitionBuilder
+                .genericBeanDefinition(JokeService.class)
+                .setFactoryMethodOnBean("getJokeService", "myJokeServiceFactory")
+                .getBeanDefinition());
+        JokeService jokeService = beanFactory.getBean(JokeService.class);
+        Assertions.assertNotNull(jokeService);
+    }
+
+    @Test
+    void test_InstanceSupplier() {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        beanFactory.registerBeanDefinition("myJokeService", BeanDefinitionBuilder
+                .genericBeanDefinition(JokeService.class, () ->
+                        new JokeServiceImpl(new JokeApiClient()))
+                .getBeanDefinition());
+        JokeService jokeService = beanFactory.getBean(JokeService.class);
+        Assertions.assertNotNull(jokeService);
     }
 
     @Test
@@ -99,7 +124,13 @@ public class BeanFactoryTests {
         }
     }
 
-    public static class MyJokeServiceFactory implements FactoryBean<JokeService> {
+    public static class MyJokeServiceFactory {
+        public JokeService getJokeService() throws Exception {
+            return new JokeServiceImpl(new JokeApiClient());
+        }
+    }
+
+    public static class MyJokeServiceFactoryBean implements FactoryBean<JokeService> {
         @Override
         public JokeService getObject() throws Exception {
             return new JokeServiceImpl(new JokeApiClient());
